@@ -6,7 +6,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f8f9fa;
+      background-color:#fbc2eb;
       text-align: center;
       padding: 30px;
     }
@@ -33,17 +33,36 @@
       cursor: pointer;
     }
 
-    .song-list {
-      display: none;
-      margin-top: 30px;
+    table {
+      margin: 30px auto;
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 700px;
+      background-color: #fff;
+      display: none; /* Hidden by default */
     }
 
-    .song {
-      margin: 10px 0;
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+    }
+
+    th {
+      background-color: #007acc;
+      color: white;
+    }
+
+    td button {
+      padding: 8px 16px;
+      background-color: #1db954;
+      color: white;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
-      color: #007acc;
-      font-size: 18px;
-      text-decoration: underline;
+    }
+
+    td button:hover {
+      background-color: #148b3a;
     }
 
     audio {
@@ -54,6 +73,7 @@
   </style>
 </head>
 <body>
+
   <nav>
     <a href="index.html">Home</a> |
     <a href="about.html">About</a> |
@@ -65,70 +85,79 @@
   <p>Select your mood to see songs:</p>
 
   <!-- Mood Buttons -->
-  <button class="mood-btn" onclick="showSongs('chill')">🌙 Chill Vibes</button>
-  <button class="mood-btn" onclick="showSongs('happy')">😊 Happy Beats</button>
-  <button class="mood-btn" onclick="showSongs('energetic')">⚡ Energetic Groove</button>
-  <button class="mood-btn" onclick="showSongs('romantic')">💕 Romantic Vibes</button>
-  <button class="mood-btn" onclick="showSongs('sad')">💔 Sad Vibes</button>
+  <button class="mood-btn" onclick="showMood('chill')">🌙 Chill Vibes</button>
+  <button class="mood-btn" onclick="showMood('happy')">😊 Happy Beats</button>
+  <button class="mood-btn" onclick="showMood('energetic')">⚡ Energetic Groove</button>
+  <button class="mood-btn" onclick="showMood('romantic')">💕 Romantic Vibes</button>
+  <button class="mood-btn" onclick="showMood('sad')">💔 Sad Vibes</button>
 
-  <!-- Chill Vibes -->
-  <div id="chill" class="song-list">
-    <h2>🌙 Chill Vibes</h2>
-    <div class="song" onclick="playSong('music/hasi.mp3')">hasi ban gaye tum</div>
-    <div class="song" onclick="playSong('music/baby.mp3')">baby girl</div>
-    <div class="song" onclick="playSong('music/love.mp3')">love you zindagi</div>
-  </div>
+  <!-- Chill Table -->
+  <table id="chill">
+    <tr><th colspan="3">🌙 Chill Vibes</th></tr>
+    <tr><th>#</th><th>Song Title</th><th>Action</th></tr>
+    <tr><td>1</td><td>Hasi Ban Gaye Tum</td><td><button onclick="playSong('music/hasi.mp3')">Play</button></td></tr>
+    <tr><td>2</td><td>Baby Girl</td><td><button onclick="playSong('music/baby.mp3')">Play</button></td></tr>
+    <tr><td>3</td><td>Love You Zindagi</td><td><button onclick="playSong('music/love.mp3')">Play</button></td></tr>
+  </table>
 
-  <!-- Happy Beats -->
-  <div id="happy" class="song-list">
-    <h2>😊 Happy Beats</h2>
-    <div class="song" onclick="playSong('music/son1.mp3')">Happy –hasi </div>
-    <div class="song" onclick="playSong('music/song5.mp3')">Can’t Stop the Feeling – Justin Timberlake</div>
-    <div class="song" onclick="playSong('music/song6.mp3')">Best Day of My Life – American Authors</div>
-  </div>
+  <!-- Happy Table -->
+  <table id="happy">
+    <tr><th colspan="3">😊 Happy Beats</th></tr>
+    <tr><th>#</th><th>Song Title</th><th>Action</th></tr>
+    <tr><td>1</td><td>Happy – Hasi</td><td><button onclick="playSong('music/son1.mp3')">Play</button></td></tr>
+    <tr><td>2</td><td>Can’t Stop the Feeling</td><td><button onclick="playSong('music/song5.mp3')">Play</button></td></tr>
+    <tr><td>3</td><td>Best Day of My Life</td><td><button onclick="playSong('music/song6.mp3')">Play</button></td></tr>
+  </table>
 
-  <!-- Energetic Groove -->
-  <div id="energetic" class="song-list">
-    <h2>⚡ Energetic Groove</h2>
-    <div class="song" onclick="playSong('music/kar .mp3')">kar har maidan fatehy</div>
-    <div class="song" onclick="playSong('music/man.mp3')">man sudar </div>
-    <div class="song" onclick="playSong('music/zinda.mp3')">bahg milka bhag</div>
-  </div>
+  <!-- Energetic Table -->
+  <table id="energetic">
+    <tr><th colspan="3">⚡ Energetic Groove</th></tr>
+    <tr><th>#</th><th>Song Title</th><th>Action</th></tr>
+    <tr><td>1</td><td>Kar Har Maidan Fateh</td><td><button onclick="playSong('music/kar.mp3')">Play</button></td></tr>
+    <tr><td>2</td><td>Man Sudhar</td><td><button onclick="playSong('music/man.mp3')">Play</button></td></tr>
+    <tr><td>3</td><td>Zinda – Bhaag Milkha Bhaag</td><td><button onclick="playSong('music/zinda.mp3')">Play</button></td></tr>
+  </table>
 
-  <!-- Romantic Vibes -->
-  <div id="romantic" class="song-list">
-    <h2>💕 Romantic Vibes</h2>
-    <div class="song" onclick="playSong('music/Romantic.mp3')">romantic</div>
-    <div class="song" onclick="playSong('music/song2.mp3')">song2</div>
-    <div class="song" onclick="playSong('music/Raabta.mp3')">Taabta</div>
-  </div>
+  <!-- Romantic Table -->
+  <table id="romantic">
+    <tr><th colspan="3">💕 Romantic Vibes</th></tr>
+    <tr><th>#</th><th>Song Title</th><th>Action</th></tr>
+    <tr><td>1</td><td>Romantic</td><td><button onclick="playSong('music/Romantic.mp3')">Play</button></td></tr>
+    <tr><td>2</td><td>Song 2</td><td><button onclick="playSong('music/song2.mp3')">Play</button></td></tr>
+    <tr><td>3</td><td>Raabta</td><td><button onclick="playSong('music/Raabta.mp3')">Play</button></td></tr>
+  </table>
 
-  <!-- Sad Vibes -->
-  <div id="sad" class="song-list">
-    <h2>💔 Sad Vibes</h2>
-    <div class="song" onclick="playSong('music/song1.mp3')">Song1</div>
-    <div class="song" onclick="playSong('music/hasi.mp3')">hasi ban gay tum</div>
-    <div class="song" onclick="playSong('music/song3.mp3')">song3</div>
-
-  </div>
+  <!-- Sad Table -->
+  <table id="sad">
+    <tr><th colspan="3">💔 Sad Vibes</th></tr>
+    <tr><th>#</th><th>Song Title</th><th>Action</th></tr>
+    <tr><td>1</td><td>Song 1</td><td><button onclick="playSong('music/song1.mp3')">Play</button></td></tr>
+    <tr><td>2</td><td>Hasi Ban Gaye Tum</td><td><button onclick="playSong('music/hasi.mp3')">Play</button></td></tr>
+    <tr><td>3</td><td>Song 3</td><td><button onclick="playSong('music/song3.mp3')">Play</button></td></tr>
+  </table>
 
   <!-- Audio Player -->
   <audio id="audioPlayer" controls></audio>
 
+  <!-- JavaScript -->
   <script>
-    function showSongs(moodId) {
-      // Hide all song lists
-      document.querySelectorAll('.song-list').forEach(el => el.style.display = 'none');
-      // Show selected mood's songs
-      document.getElementById(moodId).style.display = 'block';
+    function showMood(moodId) {
+      // Hide all tables
+      const tables = document.querySelectorAll("table");
+      tables.forEach(table => table.style.display = "none");
+
+      // Show the selected mood table
+      const selectedTable = document.getElementById(moodId);
+      if (selectedTable) {
+        selectedTable.style.display = "table";
+      }
     }
 
     function playSong(filePath) {
-      const audio = document.getElementById('audioPlayer');
+      const audio = document.getElementById("audioPlayer");
       audio.src = filePath;
       audio.play();
     }
-
   </script>
 
 </body>
